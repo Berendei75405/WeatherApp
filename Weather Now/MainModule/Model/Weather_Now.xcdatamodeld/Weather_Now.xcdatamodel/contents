@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Day" representedClassName=".Day" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="precMM" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="precProb" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="tempMax" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempMin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="parts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Parts" inverseName="day" inverseEntity="Parts"/>
+    </entity>
+    <entity name="Fact" representedClassName=".Fact" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="condition" optional="YES" attributeType="String"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="temp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="windDir" optional="YES" attributeType="String"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="foreCast" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ForeCast" inverseName="fact" inverseEntity="ForeCast"/>
+    </entity>
+    <entity name="ForeCast" representedClassName=".ForeCast" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="fact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Fact" inverseName="foreCast" inverseEntity="Fact"/>
+        <relationship name="parts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Parts" inverseName="foreCast" inverseEntity="Parts"/>
+    </entity>
+    <entity name="Hours" representedClassName=".Hours" syncable="YES">
+        <attribute name="condition" optional="YES" attributeType="String"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="hour" optional="YES" attributeType="String"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="precMM" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="precProb" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="windDir" optional="YES" attributeType="String"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="parts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Parts" inverseName="hours" inverseEntity="Parts"/>
+    </entity>
+    <entity name="Parts" representedClassName=".Parts" syncable="YES">
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="parts" inverseEntity="Day"/>
+        <relationship name="foreCast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ForeCast" inverseName="parts" inverseEntity="ForeCast"/>
+        <relationship name="hours" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hours" inverseName="parts" inverseEntity="Hours"/>
+    </entity>
+    <fetchRequest name="K" entity="ForeCast" predicateString="tempHour == 2"/>
+</model>
