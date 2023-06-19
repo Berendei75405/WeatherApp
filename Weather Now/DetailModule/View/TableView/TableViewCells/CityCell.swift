@@ -8,7 +8,7 @@
 import UIKit
 
 class CityCell: UITableViewCell {
-    
+    //identifier
     static let identifier = "CityCell"
     
     //MARK: - weatherImageView
