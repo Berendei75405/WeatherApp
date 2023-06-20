@@ -8,7 +8,7 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    
+    //ссылка на view
     weak var view1: WeatherViewController!
     
     //MARK: - mainView
