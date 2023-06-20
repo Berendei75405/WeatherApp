@@ -101,7 +101,7 @@ extension ViewModel: CLLocationManagerDelegate {
     
     //MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        //создание очереди и Location
         let queue = DispatchQueue(label: "Location", attributes: .concurrent)
         let workItem = DispatchWorkItem {
             if let location = locations.last {
